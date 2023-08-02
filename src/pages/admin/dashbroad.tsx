@@ -82,6 +82,11 @@ const Dashbroad = () => {
                          Sửa
                     </Link>
                 </button>
+                <button className="bg-blue-500 text-white rounded-md p-2">
+                    <Link to={`/admin/product/add`}>
+                         Thêm
+                    </Link>
+                </button>
 
               </td>
             </tr>

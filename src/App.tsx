@@ -9,7 +9,7 @@ import Dashbroad from './pages/admin/dashbroad'
 import Add from './pages/admin/add'
 import ProductUpdate from './pages/admin/update'
 import AdminLayout from './componets/adminlayout'
-// import AdminLayoutADD from './componets/adminlayoutAdd'
+import AdminLayoutADD from './componets/adminlayoutAdd'
 import ProductDetail from './pages/user/detail'
 
 function App() {
@@ -25,9 +25,9 @@ function App() {
 
       </Route>
 
-      {/* <Route path='/admin/add' element={<AdminLayoutADD />}>
+      <Route path='/admin/product/add' element={<AdminLayoutADD />}>
       <Route index element={<Add/>} />
-      </Route> */}
+      </Route>
 
       <Route path='/login' element={<Login />}></Route>
       <Route path='/signup' element={<Signup />}></Route>
