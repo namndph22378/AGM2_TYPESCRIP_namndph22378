@@ -55,6 +55,11 @@ const Dashbroad = () => {
             <th
               className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
             >
+              Danh mục
+            </th>
+            <th
+              className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+            >
               Thao tác
             </th>
           </tr>
@@ -71,11 +76,12 @@ const Dashbroad = () => {
               <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.price.toLocaleString()}</td>
               <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.original_price.toLocaleString()}</td>
               <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                <img className="w-[40%]" src={product.images?.[0].base_url} alt="" />
-              </td>
+                <img className="w-[40%]" src={product.images} alt="" /></td>
+              <td className="whitespace-nowrap px-4 py-2 text-gray-700">{product.cate_id}</td>
+
               <td className="grid grid-cols-2 gap-2 mt-24">
                 <button className="bg-red-600 text-white rounded-md p-2" 
-                  // onClick={() =>handleDeleteProduct(product.id)}
+                  onClick={() =>handleDeleteProduct(product.id ) }
                 >Xoá</button>
                 <button className="bg-green-500 text-white rounded-md p-2">
                     <Link to={`/admin/product/${product.id}`}>

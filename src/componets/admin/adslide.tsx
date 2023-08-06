@@ -15,7 +15,7 @@ const Sideber = (props: Props) => {
                     <ul className="space-y-2 font-medium">
                         <li>
                             <a
-                                href="admin/dt"
+                                
                                 className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-200"
                             >
                                 <svg
@@ -38,7 +38,7 @@ const Sideber = (props: Props) => {
                         </li>
                         <li>
                             <a
-                                href="admin/laptop"
+                                
                                 className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-200"
                             >
                                 <svg
@@ -62,7 +62,7 @@ const Sideber = (props: Props) => {
                         </li>
                         <li>
                             <a
-                                href="admin/maytinh"
+                              
                                 className="flex items-center p-2 text-gray-900 rounded-lg  hover:bg-gray-100 dark:hover:bg-gray-200"
                             >
                                 <svg

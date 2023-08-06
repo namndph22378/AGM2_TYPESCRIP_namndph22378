@@ -70,6 +70,18 @@ const Signup = (props: Props) => {
                 {errors.password?.type === "required" && <small id="passlHelp" className="form-text text-muted">Trường  Password là bắt buộc</small>}
                 {errors.password?.type === "minLength" && <small id="passlHelp" className="form-text text-muted">{errors.password.message}</small>}
               </div>
+              
+              <div>
+                <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-900">confirmPassword</label>
+                <input {...register('confirmPassword', {
+                  required: true, minLength: {
+                    value: 6,
+                    message: "Mật khẩu phải có ít nhất 6 ký tự"
+                  }
+                })} type="password" name="confirmPassword" id="confirmPassword" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-900 dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                {errors.confirmPassword?.type === "required" && <small id="passlHelp" className="form-text text-muted">Trường  Password là bắt buộc</small>}
+                {errors.confirmPassword?.type === "minLength" && <small id="passlHelp" className="form-text text-muted">{errors.confirmPassword.message}</small>}
+              </div>
 
               <button type="submit" className="w-full text-gray-900 bg-primary-600 bg-red-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Đăng Ký</button>
               <div>

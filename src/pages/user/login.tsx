@@ -63,7 +63,7 @@ const Login = (props: Props) => {
                   <a href=""><img src="./logo2.png" alt="" /></a>
                 </div>
               </div>
-              <button className="btn btn-red"><Link to={`/signup`}>Đăng kí</Link></button>
+              <button className="btn btn-red"><Link to={`/signup`}>Đăng  Kí</Link></button>
               {/* <a href="/signup" className="w-full text-gray-900 bg-primary-600 bg-red-500 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Đăng Ký</a> */}
 
             </form>

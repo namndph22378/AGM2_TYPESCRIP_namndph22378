@@ -12,6 +12,11 @@ import AdminLayout from './componets/adminlayout'
 import AdminLayoutADD from './componets/adminlayoutAdd'
 import ProductDetail from './pages/user/detail'
 import Dashbroad_cate from './pages/admin_cate/dashbroad'
+import AddCategoryForm from './pages/admin_cate/add_cate'
+import CategoryUpdate from './pages/admin_cate/update'
+import Dashbroad_user from './pages/admin_user/dashbroad'
+import AddUserFrom from './pages/admin_user/add_user'
+import UserUpdate from './pages/admin_user/update'
 
 function App() {
   return <BrowserRouter>
@@ -22,10 +27,17 @@ function App() {
       </Route>
       <Route path='/admin' element={<AdminLayout />}>
         <Route index element={<Dashbroad />} />
-        <Route path='product/:id' element={<ProductUpdate />} />
         <Route path='category'  element={<Dashbroad_cate />}/>
-      </Route>
+        <Route path='user'  element={<Dashbroad_user />}/>
 
+        <Route path='product/:id' element={<ProductUpdate />} />
+        <Route path='categorys/:id' element={<CategoryUpdate />} />
+        <Route path='users/:id' element={<UserUpdate />} />
+
+      </Route>
+      <Route path='/admin/categorys/add'  element={<AddCategoryForm />}/>
+      <Route path='/admin/users/add'  element={<AddUserFrom />}/>
+      
       <Route path='/admin/product/add' element={<AdminLayoutADD />}>
         <Route index element={<Add />} />
       </Route>

@@ -2,14 +2,14 @@ import {useForm} from 'react-hook-form'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 import {useParams, useNavigate} from 'react-router-dom'
-import { getById, update } from '../../api/products';
-import { updateForm, updateSchema } from '../../interfaces/auth';
+import { getById, update } from '../../api/user';
+import { updateFormUser, updateUser } from '../../interfaces/auth';
 
-const ProductUpdate =()=>{
+const UserUpdate =()=>{
     const {id} = useParams()
     const navigate = useNavigate()
-    const {register, handleSubmit, formState: {errors}} = useForm<updateForm>({
-        resolver: yupResolver(updateSchema),
+    const {register, handleSubmit, formState: {errors}} = useForm<updateFormUser>({
+        resolver: yupResolver(updateUser),
         defaultValues: async () => {
             if (id) {
                 return await fetchProductById(id)
@@ -19,12 +19,12 @@ const ProductUpdate =()=>{
     })
 
 
-    const onSubmit = async (data: updateForm) => {
+    const onSubmit = async (data: updateFormUser) => {
         try {
             if (id) {
                 const response = await update(id, data)
                 console.log(response);
-                navigate('/admin')
+                navigate('/admin/user')
             }
         }catch(err) {
             console.log(err);
@@ -47,7 +47,7 @@ const ProductUpdate =()=>{
         </div>
   
         <div className="rounded-lg border bg-white p-8 shadow-lg border lg border:col-span-3 lg border:p-12">
-          <form action="" className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+          <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label>Name</label>
               <input
@@ -58,49 +58,46 @@ const ProductUpdate =()=>{
                 {errors.name && errors.name.message}
               </p>
             </div>
-  
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <label>Gía</label>
-                <input
-                  className="w-full rounded-lg border border-gray-200 p-3 text-sm"
-                  {...register("price")}
-                  type="number"
-                />
-                <p className='text-red-600 text-[10px]'>
-                {errors.price && errors.price.message}
-              </p>
-              </div>
-  
-              <div>
-                <label>Giảm giá</label>
-                <input
-                  className="w-full rounded-lg border border-gray-200 p-3 text-sm"
-                  {...register("original_price")}
-                  type="number"
-                />
-                <p className='text-red-600 text-[10px]'>
-                {errors.original_price && errors.original_price.message}
-              </p>
-              </div>
-            </div>
-  
-  
+
             <div>
-              <label>Mô tả</label>
-  
-              <textarea
+              <label>Email</label>
+              <input
                 className="w-full rounded-lg border border-gray-200 p-3 text-sm"
-                {...register("description")}
-              ></textarea>
+                {...register("email")}
+              />
               <p className='text-red-600 text-[10px]'>
-                {errors.description && errors.description.message}
+                {errors.email && errors.email.message}
               </p>
             </div>
+
+            <div>
+              <label>Password</label>
+              <input
+                className="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                {...register("password")}
+              />
+              <p className='text-red-600 text-[10px]'>
+                {errors.password && errors.password.message}
+              </p>
+            </div>
+
+            <div>
+              <label>ConfirmPassword</label>
+              <input
+                className="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                {...register("confirmPassword")}
+              />
+              <p className='text-red-600 text-[10px]'>
+                {errors.confirmPassword && errors.confirmPassword.message}
+              </p>
+            </div>
+  
+            
   
             <div className="mt-4">
               <button
                 type="submit"
+                // onClick={onSubmit}
                 className="inline-block w-full rounded-lg border bg-black px-5 py-3 font-medium text-white sm:w-auto"
               >
                 Cập nhật
@@ -113,4 +110,4 @@ const ProductUpdate =()=>{
     
     </section>
     }
-    export default ProductUpdate
+    export default UserUpdate

@@ -40,7 +40,7 @@ const Product = ({data}: Props) => {
     return <Link to={`product/${data.id}`} className="block">
     <img
       alt="Art"
-      src={data?.images[0].base_url}
+      src={data?.images}
       className="h-64 w-full object-cover sm:h-80 lg:h-96"
     />
   

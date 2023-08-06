@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react"
 import { Link } from 'react-router-dom'
-import { getAll } from "../../api/categorys"
+import { deleteUser, getAll } from "../../api/user"
 
-import { ICategory } from "../../interfaces/auth"
+import { IUser } from "../../interfaces/auth"
 import { deleteCategory } from "../../api/categorys"
 
-const Dashbroad_cate = () => {
-    const [categorys, setCategory] = useState<ICategory[]>([])
+const Dashbroad_user = () => {
+    const [users, setUsers] = useState<IUser[]>([])
 
-    const fetchCategory = async () => {
+    const fetchUser= async () => {
         const { data } = await getAll()
-        setCategory(data)
+        setUsers(data)
     }
-    const handleDeleteCategory = async (categoyId: number) => {
+    const handleDeleteUser = async (userId: number) => {
         // Gọi API để xóa sản phẩm
-        await deleteCategory(categoyId);
+        await deleteUser(userId);
         // Cập nhật danh sách sản phẩm
-        await fetchCategory();
+        await fetchUser();
 
     }
 
     useEffect(() => {
-        fetchCategory()
+        fetchUser()
 
     }, [])
     return <div className=" flex flex-col overflow-x-auto ">
@@ -33,12 +33,27 @@ const Dashbroad_cate = () => {
                         <th
                             className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
                         >
-                            Id danh mục
+                            Id Người dùng
                         </th>
                         <th
                             className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
                         >
-                            Tên danh mục
+                            Tên người dùng
+                        </th>
+                        <th
+                            className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                        >
+                            Email
+                        </th>
+                        <th
+                            className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                        >
+                            Password
+                        </th>
+                        <th
+                            className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
+                        >
+                            confirmPassword
                         </th>
                         <th
                             className="whitespace-nowrap px-4 py-2 text-left font-medium text-gray-900"
@@ -50,25 +65,29 @@ const Dashbroad_cate = () => {
                 </thead>
 
                 <tbody className="divide-y divide-gray-200">
-                    {categorys.map(categorys => (
+                    {users.map(users => (
+                        
                         <tr>
                             <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                
-                                {categorys.id}
+                                {users.id}
                             </td>
-                            <td className="whitespace-nowrap px-4 py-2 text-gray-700"> {categorys.name}</td>
+                            <td className="whitespace-nowrap px-4 py-2 text-gray-700"> {users.name}</td>
+                            <td className="whitespace-nowrap px-4 py-2 text-gray-700"> {users.email}</td>
+                            <td className="whitespace-nowrap px-4 py-2 text-gray-700"> {users.password}</td>
+                            <td className="whitespace-nowrap px-4 py-2 text-gray-700"> {users.confirmPassword}</td>
+
                             
                             <td className="grid grid-cols-2 gap-2 mt-24">
                                 <button className="bg-red-600 text-white rounded-md p-2"
-                                onClick={() =>handleDeleteCategory(categorys.id)}
+                                onClick={() =>handleDeleteUser(users.id)}
                                 >Xoá</button>
                                 <button className="bg-green-500 text-white rounded-md p-2">
-                                    <Link to={`/admin/categorys/${categorys.id}`}>
+                                    <Link to={`/admin/users/${users.id}`}>
                                         Sửa
                                     </Link>
                                 </button>
                                 <button className="bg-blue-500 text-white rounded-md p-2">
-                                    <Link to={`/admin/categorys/add`}>
+                                    <Link to={`/admin/users/add`}>
                                         Thêm
                                     </Link>
                                 </button>
@@ -76,9 +95,10 @@ const Dashbroad_cate = () => {
                             </td>
                         </tr>
                     ))}
+                    
                 </tbody>
             </table>
         </div>
     </div>
 }
-export default Dashbroad_cate
+export default Dashbroad_user
