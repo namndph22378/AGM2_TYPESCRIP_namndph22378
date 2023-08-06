@@ -22,7 +22,10 @@ export interface IProduct {
     brand: {id: number, name: string, slug: string},
     specifications: ISpecification[]
 }
-
+export interface ICategory{
+    id: string,
+    name: string
+}
 export interface ISpecification {
     name: string,
     attributes: {code: string, name: string, value: string}[]
